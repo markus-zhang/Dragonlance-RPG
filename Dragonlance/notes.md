@@ -1,0 +1,24 @@
+- The engine should have a few controller classes (or functions for simpler code structure)
+  - All controllers should be owned by a certain `cScene`
+  - `cGameScene` should own the following controllers:
+    - AIController: This controller loops through all non-player entities:
+      - It has access to the internal data of each entity
+      - It *thinks* for the entity:
+        - Has it seen the player?
+        - What is its next move?
+        - If it moves, how does it move towards the player?
+        - If it fights, which weapon does it wield?
+        - etc.
+    - EffectController: This controller processes all effects
+      - Effects are NOT visual effects
+        - Battle effects (all kinds of buff/debuff) - Most are instant, some are persistent
+        - Permenant effects (add 1 str)
+        - Misc.
+          - Teleported (position change)
+      - All effects are executed instantly, without delay, and not grouped into one frame
+      - It has access to the interal data of each entity, and probably more (Teleport probably needs data of `cMap` as well)
+    - VisualEffectController: This controller processes all visual effects
+      - Visual effects should be the last to render
+      - It calls the `RenderVisualEffectWithBias()` function in `cGraphics`
+      - It basically just passes an id and location to `cGraphics`
+      - `cGraphics` then draws it on top of everything
