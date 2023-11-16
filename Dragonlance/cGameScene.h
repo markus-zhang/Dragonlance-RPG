@@ -10,6 +10,7 @@
 class cMap;
 class cEntity;
 struct cMapLocation;
+class cItemFactory;
 
 class cGameScene : public cScene {
 public:
@@ -20,6 +21,7 @@ public:
 		map = m;
 		screen = s;
 		playerEntity = pe;
+		inConversationState = false;
 		// Initial map is the world map
 		currentMap = (*map)["ULTIMA"];
 		SDL_assert(currentMap != nullptr);
@@ -40,6 +42,9 @@ public:
 	void shadowCastingExperimentalFOV();
 	bool canScroll(int dir);
 	void scroll(int dir);
+
+	// items
+	void createItemOnEntity(cEntity& e, std::string id, cItemFactory& itemFactory);
 
 	// TODO: replace cMap* with a reference to unordered_map<std::string, cMap*>
 	// TODO: from the resource management class
@@ -64,4 +69,7 @@ private:
 	// std::vector<cEntity*> npc;
 
 	cAIController ai;
+
+	// States
+	bool inConversationState;
 };

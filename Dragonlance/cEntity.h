@@ -1,9 +1,11 @@
 #pragma once
 #include "Parameters.h"
 #include <string>
+#include <vector>
 
 class cGraphics;
 class cGameScreen;
+class cItem;
 
 class cEntity {
 public:
@@ -19,6 +21,7 @@ public:
 	/*virtual void draw(cGraphics* g, const cGameScreen& s);
 	virtual void move(int dir);*/
 	virtual void updateAnimationCounter();
+	virtual void addItem(cItem* i);
 
 public:
 	int worldX;
@@ -36,4 +39,6 @@ public:
 	int movePoint;
 	int animationCounter;
 	bool seenPlayer;
+	int money;
+	std::vector<cItem*> inventory;
 };

@@ -1,35 +1,41 @@
 #pragma once
 #include "cEntity.h"
-#include <unordered_map>
+#include <vector>
 #include <string>
 
-struct price {
-	// sell usually < buy
-	// sell < 0 then do not buy back
-	int sell;
-	int buy;
-};
+/// <summary>
+/// cMerchant is mostly a data class
+/// cMerchantController is the system class
+/// cMerchant contains the following data:
+///		- Everything cEntity has
+///		- Merchant's name
+///		- A vector of items (Merchant does not depelete stock)
+///		- Amount of gold available to buy back player's items
+/// </summary>
+
+class cItem;
 
 class cMerchant : public cEntity {
 public:
 	cMerchant() = default;
-	cMerchant(int wX, int wY, int ssbi, std::string ssid, int nf, int mvpt) :
+	cMerchant(int wX, int wY, int ssbi, std::string ssid, int nf, int mvpt, std::string type) :
 		cEntity(wX, wY, ssbi, ssid, nf, mvpt) {
-		// Initialize menu
+		// Initialize menu based on merchant type
 
 		// Initialize money
 		// money = 100d10
 	}
 
-	std::unordered_map<std::string, price>& getMenu() { return menu; }
-	// For both inserting and updating
-	void updateMenu(std::string id, price p);
-	void removeItem(std::string id);
-	void playerBuy(std::string id);
-	void playerSell(std::string id);
+	/// <comment>
+	/// All functionalities live in the controller class
+	/// </comment>
+	// void init(std::string type);
+	// void updateMenu(cItem* i);
+
+	std::vector<cItem*>& getMenu();
 
 public:
 	std::string name;
-	std::unordered_map<std::string, price> menu;
+	std::vector<cItem*> menu;
 	int money;
 };

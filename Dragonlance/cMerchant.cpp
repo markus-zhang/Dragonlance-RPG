@@ -1,5 +1,7 @@
 #include "cMerchant.h"
+#include "cItemFactory.h"
+#include "cItem.h"
 
-void cMerchant::updateMenu(std::string id, price p) {
-	menu[id] = p;
+std::vector<cItem*>& cMerchant::getMenu() {
+	return menu;
 }

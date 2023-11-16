@@ -1,5 +1,6 @@
 #pragma once
 #include "cEntity.h"
+#include "cItem.h"
 
 class cPlayer : public cEntity {
 public:
@@ -13,6 +14,7 @@ public:
 		maxMP = 20;
 		currentMP = maxMP;
 	}
+	bool addItem(const cItem* i);
 
 public:
 	int meleeDamage;
@@ -21,4 +23,6 @@ public:
 	int currentHP;
 	int maxMP;
 	int currentMP;
+	std::vector<cItem> inventory;
+
 };

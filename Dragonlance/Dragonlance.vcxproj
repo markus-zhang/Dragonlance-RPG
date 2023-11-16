@@ -148,9 +148,11 @@
     <ClCompile Include="cGameScreen.cpp" />
     <ClCompile Include="cGraphics.cpp" />
     <ClCompile Include="cItem.cpp" />
+    <ClCompile Include="cItemFactory.cpp" />
     <ClCompile Include="cMap.cpp" />
     <ClCompile Include="cMapResManager.cpp" />
     <ClCompile Include="cMerchant.cpp" />
+    <ClCompile Include="cMerchantController.cpp" />
     <ClCompile Include="cScreen.cpp" />
     <ClCompile Include="cTile.cpp" />
     <ClCompile Include="cTimer.cpp" />
@@ -166,9 +168,11 @@
     <ClInclude Include="cGameScreen.h" />
     <ClInclude Include="cGraphics.h" />
     <ClInclude Include="cItem.h" />
+    <ClInclude Include="cItemFactory.h" />
     <ClInclude Include="cMap.h" />
     <ClInclude Include="cMapResManager.h" />
     <ClInclude Include="cMerchant.h" />
+    <ClInclude Include="cMerchantController.h" />
     <ClInclude Include="cMonsterOrc.h" />
     <ClInclude Include="cPlayer.h" />
     <ClInclude Include="cScene.h" />

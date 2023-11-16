@@ -138,7 +138,8 @@ void cGraphics::RenderText(std::string text, int size, int r, int g, int b,
 */
 
 void cGraphics::RenderText(int screenX, int screenY, const char* text, const char* id) {
-	FC_Draw(font, m_Renderer, screenX, screenY, text, id);
+	// FC_Draw(font, m_Renderer, screenX, screenY, text, id);
+	FC_DrawBox(font, m_Renderer, SDL_Rect{ 0, 0, 200, 200 }, text);
 }
 
 void cGraphics::RenderTile(const cTile& t) {

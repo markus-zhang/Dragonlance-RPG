@@ -93,6 +93,12 @@
     <ClCompile Include="cItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cItemFactory.cpp">
+      <Filter>Source Files\Resource Management</Filter>
+    </ClCompile>
+    <ClCompile Include="cMerchantController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyxml2.h">
@@ -157,6 +163,12 @@
     </ClInclude>
     <ClInclude Include="math.h">
       <Filter>Header Files\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="cItemFactory.h">
+      <Filter>Header Files\Resource Management</Filter>
+    </ClInclude>
+    <ClInclude Include="cMerchantController.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

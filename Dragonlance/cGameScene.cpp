@@ -3,6 +3,7 @@
 #include "Parameters.h"
 #include "cGraphics.h"
 #include "cTimer.h"
+#include "cItemFactory.h"
 #include <iostream>
 
 void cGameScene::draw() {
@@ -849,6 +850,10 @@ void cGameScene::scroll(int dir) {
 	}
 }
 
+void cGameScene::createItemOnEntity(cEntity& e, std::string id, cItemFactory& itemFactory) {
+	e.addItem(itemFactory.createItem(id));
+}
+
 void cGameScene::changeMap() {
 	if (currentMap->getMapChange().size() == 0) {
 		return;
@@ -897,25 +902,37 @@ void cGameScene::run() {
 				switch (e.key.keysym.sym)
 				{
 				case SDLK_UP:
-					if (ai.canMoveDirection(&playerEntity, NORTH, currentMap)) {
+					if (inConversationState) {
+						// Enter conversation mode
+					}
+					else if (ai.canMoveDirection(&playerEntity, NORTH, currentMap)) {
 						updatePlayer(NORTH);
 						scroll(NORTH);
 					}
 					break;
 				case SDLK_DOWN:
-					if (ai.canMoveDirection(&playerEntity, SOUTH, currentMap)) {
+					if (inConversationState) {
+						// Enter conversation mode
+					}
+					else if (ai.canMoveDirection(&playerEntity, SOUTH, currentMap)) {
 						updatePlayer(SOUTH);
 						scroll(SOUTH);
 					}
 					break;
 				case SDLK_LEFT:
-					if (ai.canMoveDirection(&playerEntity, WEST, currentMap)) {
+					if (inConversationState) {
+						// Enter conversation mode
+					}
+					else if (ai.canMoveDirection(&playerEntity, WEST, currentMap)) {
 						updatePlayer(WEST);
 						scroll(WEST);
 					}
 					break;
 				case SDLK_RIGHT:
-					if (ai.canMoveDirection(&playerEntity, EAST, currentMap)) {
+					if (inConversationState) {
+						// Enter conversation mode
+					}
+					else if (ai.canMoveDirection(&playerEntity, EAST, currentMap)) {
 						updatePlayer(EAST);
 						scroll(EAST);
 					}
@@ -930,6 +947,7 @@ void cGameScene::run() {
 				case SDLK_t:
 					// talk, should set keystate to ENTER_TALK
 					// So expecting an arrow key afterwards
+					inConversationState = true;
 				default:
 					break;
 				}
@@ -941,7 +959,7 @@ void cGameScene::run() {
 		}
 		renderer->ClearScreen();
 		draw();
-		renderer->RenderText(0, 0, "FPS: 60", "test");
+		renderer->RenderText(0, 0, "Version: 0.55\n Date: 2023-02-20", "test");
 		renderer->Show();
 
 		Uint32 expectedTimeSpent = MILLISECONDS_PER_FRAME;
